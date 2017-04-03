@@ -29,4 +29,31 @@ router.post('/ideas', function(req, res, next) {
   });
 });
 
+/* Using param() to auto load an object*/
+
+router.param('idea', function(req, res, next, id) {
+  var query = Idea.findById(id);
+
+  query.exec(function (err, idea){
+    if (err) { return next(err); }
+    if (!idea) { return next(new Error('can\'t find idea')); }
+
+    req.idea = idea;
+    return next();
+  });
+});
+
+router.get('/ideas/:idea', function(req, res) {
+  res.json(req.idea);
+});
+
+/*upvote idea */
+router.put('/ideas/:idea/upvote', function(req, res, next) {
+  req.idea.upvote(function(err, idea){
+    if (err) { return next(err); }
+
+    res.json(idea);
+  });
+});
+
 module.exports = router;

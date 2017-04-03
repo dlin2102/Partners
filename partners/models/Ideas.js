@@ -7,4 +7,9 @@ var IdeaSchema = new mongoose.Schema({
   comments: [{type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}]
 })
 
+IdeaSchema.methods.upvote = function(cb) {
+  this.upvotes += 1;
+  this.save(cb);
+};
+
 mongoose.model('Idea', IdeaSchema);

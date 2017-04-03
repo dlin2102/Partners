@@ -54,7 +54,7 @@ function($scope, $stateParams, ideas){
   if($scope.body === '') { return; }
   $scope.idea.comments.push({
     body: $scope.body,
-    author: 'user'
+    author: 'user',
   });
   $scope.body = '';
 };
