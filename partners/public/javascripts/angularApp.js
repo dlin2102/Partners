@@ -1,5 +1,4 @@
-angular
-.module('partners', ['ui.router'])
+angular.module('partners', ['ui.router'])
 
 .config([
     "$stateProvider",
@@ -8,8 +7,9 @@ angular
 ])
 
 .factory('ideas', [function() {
-  var idea = [
-  ];
+  var idea = {
+    ideas: []
+  };
   return idea;
 }])
 
@@ -30,8 +30,8 @@ angular
                 description: $scope.description,
                 upvotes: 0,
                 comments:[
-                  {author: 'Sam', body: 'Great idea!', upvote: 0},
-                  {author: 'Steve', body: "I think that's already a product", upvote: 0}
+                  {author: 'Sam', body: 'Great idea!'},
+                  {author: 'Steve', body: "I think that's already a product"}
                 ]
             });
             $scope.title = '';
@@ -54,8 +54,7 @@ function($scope, $stateParams, ideas){
   if($scope.body === '') { return; }
   $scope.idea.comments.push({
     body: $scope.body,
-    author: 'user',
-    upvotes: 0
+    author: 'user'
   });
   $scope.body = '';
 };

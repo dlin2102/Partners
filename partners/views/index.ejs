@@ -5,7 +5,7 @@
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
-    <script src="app.js"></script>
+    <script src="/javascripts/angularApp.js"></script>
     <style>
         .glyphicon-thumbs-up {
             cursor: pointer
@@ -22,13 +22,14 @@
     </div>
     <script type="text/ng-template" id="/home.html">
         <div class="page-header">
-            <h1>Partners</h1>
+            <h1>Coworking</h1>
         </div>
 
         <div ng-repeat="idea in ideas | orderBy:'-upvotes'">
-            <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(idea)"></span> {{idea.upvotes}}
+            <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(idea)"></span>
             <span>
-              <a href="#/ideas/{{$index}}">Comments</a>
+              <a href="#/ideas/{{$index}}">{{idea.title}}</a>
+            {{idea.description}}  - {{idea.upvotes}}
             </span>
         </div>
 
