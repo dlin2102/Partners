@@ -7,4 +7,4 @@ var IdeaSchema = new mongoose.Schema({
   comments: [{type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}]
 })
 
-mongoose. model('Idea', IdeaSchema);
+mongoose.model('Idea', IdeaSchema);
