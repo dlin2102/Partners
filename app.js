@@ -1,4 +1,10 @@
-angular.module('partners', []);
+angular
+.module('partners', ['ui.router']);
+.config([
+    "$stateProvider",
+    "$urlRouterProvider",
+    RouterFunction
+])
 .factory('ideas', [function() {
   var i = {
     ideas: [title:'idea',description:'descrip',upvotes:0]
@@ -32,4 +38,15 @@ angular.module('partners', []);
         };
 
     }
+
+    function RouterFunction($stateProvider, $urlRouterProvider) {
+    $stateProvider
+        .state("home", {
+            url: "/home",
+            templateUrl: '/home.html',
+            controller: 'MainCtrl'
+     });
+
+    $urlRouterProvider.otherwise('/home');
+}
 ]);
