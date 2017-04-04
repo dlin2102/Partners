@@ -6,11 +6,29 @@ angular.module('partners', ['ui.router'])
     RouterFunction
 ])
 
-.factory('ideas', [function() {
-  var idea = {
+.factory('ideas', ['$http', function($http) {
+  var i = {
     ideas: []
   };
-  return idea;
+  i.getAll = function() {
+  return $http.get('/ideas').success(function(data){
+    angular.copy(data, i.ideas);
+  });
+}
+  i.create = function(idea){
+    return $http.post('/ideas', idea).success(function(data){
+      i.ideas.push(data)
+    })
+  }
+
+  i.upvote = function(idea) {
+  return $http.put('/ideas/' + idea._id + '/upvote')
+    .success(function(data){
+      idea.upvotes += 1;
+    });
+};
+
+  return i;
 }])
 
 .controller('MainCtrl', [
@@ -25,21 +43,16 @@ angular.module('partners', ['ui.router'])
             if ($scope.title === '') {
                 return;
             }
-            $scope.ideas.push({
+            ideas.create({
                 title: $scope.title,
-                description: $scope.description,
-                upvotes: 0,
-                comments:[
-                  {author: 'Sam', body: 'Great idea!'},
-                  {author: 'Steve', body: "I think that's already a product"}
-                ]
+                description: $scope.description
             });
             $scope.title = '';
             $scope.description = '';
         }
 
         $scope.incrementUpvotes = function(idea) {
-            idea.upvotes += 1;
+            ideas.upvote(idea);
         }
 
     }])
@@ -62,11 +75,16 @@ function($scope, $stateParams, ideas){
 
 function RouterFunction($stateProvider, $urlRouterProvider) {
 $stateProvider
-    .state("home", {
-        url: "/home",
+    .state('home', {
+        url: '/home',
         templateUrl: '/home.html',
-        controller: 'MainCtrl'
- })
+        controller: 'MainCtrl',
+        resolve: {
+          postPromise: ['ideas', function(ideas){
+            return ideas.getAll();
+          }]
+        }
+      })
  .state('ideas', {
    url: '/ideas/{id}',
    templateUrl: '/ideas.html',
