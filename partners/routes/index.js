@@ -97,7 +97,7 @@ router.get('/ideas/:idea', function(req, res, next) {
 });
 
 /*delete idea */
-router.delete('/ideas/:idea', function(req, res){
+router.delete('/ideas/:idea', auth, function(req, res){
   req.idea.comments.forEach(function(id){
       Comment.remove({_id: id}, function(err){
         if(err) {return next(err)}
