@@ -125,6 +125,7 @@ router.put('/ideas/:idea/upvote', auth, function(req, res, next) {
 /* Creating a new idea and saving it to database */
 router.post('/ideas', auth, function(req, res, next) {
   var idea = new Idea(req.body);
+  idea.author = req.payload.username;
 
   idea.save(function(err, idea){
     if(err){ return next(err); }
@@ -138,6 +139,7 @@ router.post('/ideas', auth, function(req, res, next) {
 router.post('/ideas/:idea/comments', auth, function(req, res, next) {
   var comment = new Comment(req.body);
   comment.idea = req.idea;
+  comment.author = req.payload.username;
 
   comment.save(function(err, comment){
     if(err){ return next(err); }
