@@ -20,6 +20,11 @@ i.get = function(id) {
     return res.data;
   });
 };
+i.delete = function(idea){
+       return $http.delete('/ideas/' + idea._id).success(function(data){
+         angular.copy(data, i.ideas)
+       })
+     }
 
   i.create = function(idea){
     return $http.post('/ideas', idea).success(function(data){
@@ -58,7 +63,9 @@ i.addComment = function(id, comment) {
             $scope.title = '';
             $scope.description = '';
         }
-
+        $scope.deleteIdea = function(idea){
+       ideas.delete(idea)
+     }
         $scope.incrementUpvotes = function(idea) {
             ideas.upvote(idea);
         }
