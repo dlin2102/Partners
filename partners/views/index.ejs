@@ -28,8 +28,9 @@
         <div ng-repeat="idea in ideas | orderBy:'-upvotes'">
             <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(idea)"></span>
             <span>
-              <a href="#/ideas/{{$index}}">{{idea.title}}</a>
-            {{idea.description}}  - {{idea.upvotes}}
+              <a href="#/ideas/{{idea._id}}">{{idea.title}}</a> - {{idea.upvotes}}
+            </br>
+            {{idea.description}}
             </span>
         </div>
 

@@ -15,6 +15,12 @@ angular.module('partners', ['ui.router'])
     angular.copy(data, i.ideas);
   });
 }
+i.get = function(id) {
+  return $http.get('/ideas/' + id).then(function(res){
+    return res.data;
+  });
+};
+
   i.create = function(idea){
     return $http.post('/ideas', idea).success(function(data){
       i.ideas.push(data)
@@ -27,7 +33,9 @@ angular.module('partners', ['ui.router'])
       idea.upvotes += 1;
     });
 };
-
+i.addComment = function(id, comment) {
+  return $http.post('/ideas/' + id + '/comments', comment)
+}
   return i;
 }])
 
@@ -58,17 +66,19 @@ angular.module('partners', ['ui.router'])
     }])
 
 .controller('IdeasCtrl', ['$scope',
-'$stateParams',
 'ideas',
-function($scope, $stateParams, ideas){
-  $scope.idea = ideas.ideas[$stateParams.id];
+'idea',
+function($scope, ideas, idea){
+  $scope.idea = idea;
 
   $scope.addComment = function(){
   if($scope.body === '') { return; }
-  $scope.idea.comments.push({
+  ideas.addComment(idea._id, {
     body: $scope.body,
     author: 'user',
-  });
+  }).success(function(comment) {
+    $scope.idea.comments.push(comment);
+  })
   $scope.body = '';
 };
 }])
@@ -88,8 +98,13 @@ $stateProvider
  .state('ideas', {
    url: '/ideas/{id}',
    templateUrl: '/ideas.html',
-   controller: 'IdeasCtrl'
- })
+   controller: 'IdeasCtrl',
+   resolve: {
+     idea: ['$stateParams', 'ideas', function($stateParams, ideas){
+       return ideas.get($stateParams.id);
+     }]
+   }
+ });
 
 $urlRouterProvider.otherwise('/home');
 }
