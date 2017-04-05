@@ -14,47 +14,81 @@
 </head>
 
 <body ng-app="partners" ng-controller="MainCtrl">
+
+<!-- navbar -->
+  <nav class="navbar navbar-default" ng-controller="NavCtrl">
+    <ul class="nav navbar-nav">
+      <li><a href="/#/home">Partners</a></li>
+      <li ng-show="isLoggedIn()"><a>{{ currentUser() }}</a></li>
+      <li ng-show="isLoggedIn()"><a href="" ng-click="logOut()">Log Out</a></li>
+      <li ng-hide="isLoggedIn()"><a href="/#/login">Log In</a></li>
+      <li ng-hide="isLoggedIn()"><a href="/#/register">Register</a></li>
+    </ul>
+  </nav>
+
+<!-- ui-view -->
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <ui-view></ui-view>
-
         </div>
     </div>
+
+
+<!-- home page script-->
     <script type="text/ng-template" id="/home.html">
+      <!-- Partners Banner -->
+      <div id="Welcome Image">
+        <img src="">
+      </div>
         <div class="page-header">
-            <h1>Coworking</h1>
+            <h1>Partners</h1>
         </div>
 
+        <!-- ideas index -->
         <div ng-repeat="idea in ideas | orderBy:'-upvotes'">
             <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(idea)"></span>
-            <span>
-              <a href="#/ideas/{{idea._id}}">{{idea.title}}</a> - {{idea.upvotes}}
-            </br>
-            {{idea.description}}
-             <a href="#/ideas"><button ng-click="deleteIdea(idea)" type="submit">Delete Idea</button></a>
+            <span id="image">
+              <img src="{{idea.image_url}}">
             </span>
+              <a href="#/ideas/{{idea._id}}">{{idea.title}}</a> - {{idea.upvotes}}
+              {{idea.description}}
+              <span ng-show="idea.author">posted by <a>{{idea.author}}</a> |
+              </span>
+             <a href="#/ideas"><button ng-click="deleteIdea(idea)" type="submit">Delete Idea</button></a>
         </div>
 
-
-        <form ng-submit="addIdea()" style="margin-top:30px;">
+        <!-- Add new idea -->
+        <form ng-submit="addIdea()" ng-show="isLoggedIn()" style="margin-top:30px;">
             <h3>Add your idea</h3>
-
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Title" ng-model="title"></input>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Image Url" ng-model="image_url"></input>
             </div>
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Explain your idea!" ng-model="description"></input>
             </div>
             <button type="submit" class="btn btn-primary">Add Idea</button>
         </form>
+        <div ng-hide="isLoggedIn()">
+      <h3>You need to <a href="/#/login">Log In</a> or <a href="/#/register">Register</a> before you can add an idea.</h3>
+    </div>
     </script>
 
-    <script type="text/ng-template" id="/ideas.html">
+
+<!-- ideas show page with comments -->
+  <script type="text/ng-template" id="/ideas.html">
+    <!-- Back link -->
+
+  <a href="#/ideas">Back</a>
   <div class="page-header">
     <h3>
         {{idea.title}}
     </h3>
   </div>
+
+<p> {{idea.description}}</p>
 
   <div ng-repeat="comment in idea.comments">
     <span style="font-size:20px; margin-left:10px;">
@@ -64,11 +98,11 @@
   </div>
 
 
-
+    <!-- add comments -->
   <form ng-submit="addComment()"
+  ng-show="isLoggedIn()"
     style="margin-top:30px;">
     <h3>Add a new comment</h3>
-
     <div class="form-group">
       <input type="text"
       class="form-control"
@@ -77,7 +111,71 @@
     </div>
     <button type="submit" class="btn btn-primary">Post</button>
   </form>
+  <div ng-hide="isLoggedIn()">
+  <h3>You need to <a href="/#/login">Log In</a> or <a href="/#/register">Register</a> before you can comment.</h3>
+</div>
+</script>
 
+
+<!-- registration page -->
+<script type="text/ng-template" id="/register.html">
+  <div class="page-header">
+    <h1>Partners</h1>
+  </div>
+
+  <div ng-show="error" class="alert alert-danger row">
+    <span>{{ error.message }}</span>
+  </div>
+
+  <form ng-submit="register()"
+    style="margin-top:30px;">
+    <h3>Register</h3>
+
+    <div class="form-group">
+      <input type="text"
+      class="form-control"
+      placeholder="Username"
+      ng-model="user.username"></input>
+    </div>
+    <div class="form-group">
+      <input type="password"
+      class="form-control"
+      placeholder="Password"
+      ng-model="user.password"></input>
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+  </form>
+</script>
+
+
+<!-- login page -->
+<script type="text/ng-template" id="/login.html">
+  <div class="page-header">
+    <h1>Partners</h1>
+  </div>
+
+  <div ng-show="error" class="alert alert-danger row">
+    <span>{{ error.message }}</span>
+  </div>
+
+  <form ng-submit="logIn()"
+    style="margin-top:30px;">
+    <h3>Log In</h3>
+
+    <div class="form-group">
+      <input type="text"
+      class="form-control"
+      placeholder="Username"
+      ng-model="user.username"></input>
+    </div>
+    <div class="form-group">
+      <input type="password"
+      class="form-control"
+      placeholder="Password"
+      ng-model="user.password"></input>
+    </div>
+    <button type="submit" class="btn btn-primary">Log In</button>
+  </form>
 </script>
 
 </body>
