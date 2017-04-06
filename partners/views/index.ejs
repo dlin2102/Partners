@@ -23,6 +23,7 @@
     <nav class="navbar navbar-default navbar-fixed-top" ng-controller="NavCtrl">
         <ul class="nav navbar-nav">
             <li><a href="/#/home">Partners</a></li>
+            <li><a href="addIdea">Add Idea</a></li>
             <li ng-show="isLoggedIn()"><a>{{ currentUser() }}</a></li>
             <li ng-show="isLoggedIn()"><a href="" ng-click="logOut()">Log Out</a></li>
             <li ng-hide="isLoggedIn()"><a href="/#/login">Log In</a></li>
@@ -70,10 +71,10 @@
                             </span>
                             <img src="{{idea.image_url}}">
                             <div class="caption">
-                                <h4 class="ideasHeading"><a class="ideaTitle" href="#/ideas/{{idea._id}}">{{idea.title}}</a>  {{idea.upvotes}} <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(idea)"></span></h4>
+                                <h4 class="ideasHeading"><a class="ideaTitle" href="#/ideas/{{idea._id}}">{{idea.title}}</a></h4>
                                 <hr>
                                 <p>{{idea.description}}</p>
-
+                                <h5> Votes: {{idea.upvotes}}  <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(idea)"></span></h5>
                                 <hr>
                                 <a class="deleteButton" href="#/ideas"><button class="btn my-btn" ng-click="deleteIdea(idea)" type="submit">Found a Partner!</button></a>
                             </div>
@@ -81,7 +82,7 @@
                     </div>
 
                     <!-- Add new idea -->
-
+                    <div id="addIdea">
                     <form class="forms" ng-submit="addIdea()" ng-show="isLoggedIn()" style="margin-top:30px;">
                                 <h3 class="formHeading">Add Your Idea</h3>
                                 <div class="form-group">
@@ -95,9 +96,10 @@
                                 </div>
                                 <button type="submit" class="btn my-btn">Add Idea</button>
                     </form>
+
                     <div ng-hide="isLoggedIn()">
                         <h3>You need to <a class="alinks" href="/#/login">Log In</a> or <a class="alinks" href="/#/register">Register</a> before you can add an idea.</h3>
-
+                      </div>
                     </div>
                 </div>
             </div>
@@ -110,12 +112,13 @@
 
     <div class="col-md-6 col-md-offset-3">
         <!-- Back link -->
-        <div class="backbutton">
-            <a class="backLink" class="btn my-btn" href="#/ideas">Back</a>
-        </div>
+
+            <a class="backLink" href="#/ideas">Back</a>
+
         <h1 class="ideasHeading">{{idea.title}}</h1>
         <img src="{{idea.image_url}}">
         <hr>
+        <h4>Description:</h4>
         <p> {{idea.description}}</p>
         <hr>
         <div class="commentSection">
