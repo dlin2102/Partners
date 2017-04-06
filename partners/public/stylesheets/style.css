@@ -29,7 +29,7 @@ img {
 .backbutton {
   margin-top: 100px;
 }
-p {
+p, h3 {
   font-family: 'Raleway', sans-serif;
   font-size: 16px;
 }
@@ -37,6 +37,7 @@ p {
 .formHeading {
   font-family: 'Montserrat', sans-serif;
 }
+
 .ideasHeading{
   font-family: 'Lobster', cursive;
   font-size: 35px;
@@ -86,4 +87,8 @@ nav{
 .my-btn {
   background-color: #77a283;
   color: white;
+}
+.commentSection{
+  border: 1px solid black;
+  padding: 20px;
 }

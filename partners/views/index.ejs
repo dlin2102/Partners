@@ -106,30 +106,31 @@
 
 
     <!-- ideas show page with comments -->
-    <script type="text/ng-template" id="/ideas.html">
+<script type="text/ng-template" id="/ideas.html">
 
-        <div class="col-md-6 col-md-offset-3">
-            <!-- Back link -->
-            <div class="backbutton">
-                <a class="backLink" class="btn my-btn" href="#/ideas">Back</a>
-            </div>
-            <h1>{{idea.title}}</h1>
+    <div class="col-md-6 col-md-offset-3">
+        <!-- Back link -->
+        <div class="backbutton">
+            <a class="backLink" class="btn my-btn" href="#/ideas">Back</a>
+        </div>
+        <h1 class="ideasHeading">{{idea.title}}</h1>
+        <img src="{{idea.image_url}}">
+        <hr>
+        <p> {{idea.description}}</p>
+        <hr>
+        <div class="commentSection">
+            <h3 class="ideasHeading">Comments</h3>
             <hr>
-            <img src="{{idea.image_url}}">
-            <hr>
-            <p> {{idea.description}}</p>
-
-            <hr>
-            <h3>Comments</h3>
-
             <div ng-repeat="comment in idea.comments">
-                <span style="font-size:12px;">
-      {{comment.body}}
-      by {{comment.author}}
-    </span>
+                <div class="commentAuthor">
+                <h4>  {{comment.author}} said</h4>
+                </div>
+                <div class="commentBody">
+                <p>  {{comment.body}}</p>
+                </div>
                 <hr>
             </div>
-
+        </div>
 
 
             <!-- add comments -->
