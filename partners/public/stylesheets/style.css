@@ -9,22 +9,13 @@
     text-align: center;
     color: black;
 }
-
-.welcometext {
-    padding-top: 300px;
-    font-size: 70px;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.welcometext2 {
-    font-size: 35px;
-    font-family: 'Gloria Hallelujah', cursive;
-    /*font-family: 'Satisfy', cursive;*/
+.clothespin {
+  background: url('http://i.imgur.com/xBkrA58.png');
 }
 
 img {
     padding-top: 20px;
-    height: 300px;
+    height: 350px;
     width: 100%;
 }
 
@@ -38,6 +29,61 @@ img {
 .backbutton {
   margin-top: 100px;
 }
-h1 {
+p {
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+}
+
+.formHeading {
   font-family: 'Montserrat', sans-serif;
+}
+.ideasHeading{
+  font-family: 'Lobster', cursive;
+  font-size: 35px;
+}
+.itemsIndex {
+  outline: 1px solid black;
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.forms {
+   padding-top: 80px;
+    background: url('http://myomlife.com/i/2017/03/banana-tumblr-wallpapers-high-quality-resolution.jpg');
+    border: 1px solid black;
+    padding: 20px;
+}
+
+
+
+.welcometext {
+    padding-top: 300px;
+    font-size: 70px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.welcometext2 {
+    font-size: 35px;
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+.ideaTitle, .alinks {
+  color: #7ea487;
+}
+.loginAndReg {
+  padding-top: 100px;
+}
+
+.backLink{
+    color: #7ea487;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+nav{
+  background-color: #77a283;
+}
+.my-btn {
+  background-color: #77a283;
+  color: white;
 }
