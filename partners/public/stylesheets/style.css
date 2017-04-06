@@ -1,21 +1,43 @@
 .bg {
-  background: url('http://myomlife.com/i/2017/03/banana-tumblr-wallpapers-high-quality-resolution.jpg') fixed;
-  background-size: 100% 100% ;
-  background-position: center;
-  width: 100%;
-  height: 500px;
-  top:0;
-  left:0;
-  text-align: center;
-  color: black;
+    background: url('http://myomlife.com/i/2017/03/banana-tumblr-wallpapers-high-quality-resolution.jpg') fixed;
+    background-size: 100% 100%;
+    background-position: center;
+    width: 100%;
+    height: 500px;
+    top: 0;
+    left: 0;
+    text-align: center;
+    color: black;
 }
+
 .welcometext {
-  padding-top: 300px;
-  font-size: 70px;
+    padding-top: 300px;
+    font-size: 70px;
+    font-family: 'Montserrat', sans-serif;
 }
-.welcometext2{
-  font-size: 25px;
+
+.welcometext2 {
+    font-size: 35px;
+    font-family: 'Gloria Hallelujah', cursive;
+    /*font-family: 'Satisfy', cursive;*/
 }
-.textbox{
-  opacity: 2;
+
+img {
+    padding-top: 20px;
+    height: 300px;
+    width: 100%;
+}
+
+.page-header {
+    padding-top: 50px;
+}
+
+.formHeading {
+    padding-bottom: 20px;
+}
+.backbutton {
+  margin-top: 100px;
+}
+h1 {
+  font-family: 'Montserrat', sans-serif;
 }

@@ -7,6 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
     <script src="/javascripts/angularApp.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Montserrat:900|Satisfy" rel="stylesheet">
     <style>
         .glyphicon-thumbs-up {
             cursor: pointer
@@ -40,7 +41,7 @@
 <div class="bg">
   <div class="textbox">
 <h1 class="welcometext">Welcome to Partners</h1>
-<h3 class="welcometext2">Where Teamwork Makes the Dream Work</h3>
+<h2 class="welcometext2">Where Teamwork Makes the Dream Work</h2>
 </div>
 </div>
 
@@ -50,28 +51,32 @@
       <div class="row">
       <div class="col-md-6 col-md-offset-3">
 
-        <div class="page-header">
+
             <h3>Popular Ideas</h3>
-        </div>
+    <hr>
 
         <!-- ideas index -->
         <div ng-repeat="idea in ideas | orderBy:'-upvotes'">
-            <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(idea)"></span>
-            <span class="image">
-              <img src="{{idea.image_url}}">
+          <div class="thumbnail">
+            <span ng-show="idea.author">posted by <a>{{idea.author}}</a> |
             </span>
-              <h4><a href="#/ideas/{{idea._id}}">{{idea.title}}</a></h4>
-              {{idea.description}}
-              {{idea.upvotes}}
-              <span ng-show="idea.author">posted by <a>{{idea.author}}</a> |
-              </span>
-             <a href="#/ideas"><button ng-click="deleteIdea(idea)" type="submit">Delete Idea</button></a>
-             <hr>
+              <img src="{{idea.image_url}}">
+              <div class="caption">
+              <h4><a href="#/ideas/{{idea._id}}">{{idea.title}}</a>  {{idea.upvotes}} <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(idea)"></span></h4>
+<hr>
+              <p>{{idea.description}}</p>
+
+<hr>
+             <a href="#/ideas"><button ng-click="deleteIdea(idea)" type="submit">Found a Partner!</button></a>
         </div>
+      </div>
+    </div>
 
         <!-- Add new idea -->
 <form ng-submit="addIdea()" ng-show="isLoggedIn()" style="margin-top:30px;">
-    <h3>Add your idea</h3>
+  <div class="jumbotron">
+    <div class="container">
+    <h3 class="formHeading">Add Your Idea</h3>
     <div class="form-group">
         <input type="text" class="form-control" placeholder="Title" ng-model="title"></input>
     </div>
@@ -86,7 +91,9 @@
 <div ng-hide="isLoggedIn()">
     <h3>You need to <a href="/#/login">Log In</a> or <a href="/#/register">Register</a> before you can add an idea.</h3>
 </div>
+</div>
 
+  </div>
   </div>
 </div>
 </div>
@@ -96,17 +103,20 @@
 <!-- ideas show page with comments -->
   <script type="text/ng-template" id="/ideas.html">
 
-    <!-- Back link -->
-  <a href="#/ideas">Back</a>
   <div class="col-md-6 col-md-offset-3">
-  <div class="page-header">
+      <!-- Back link -->
+    <div class="backbutton">
+      <a href="#/ideas">Back</a>
+    </div>
+    <h1>{{idea.title}}</h1>
+  <hr>
 <img src="{{idea.image_url}}">
-
+<hr>
 <p> {{idea.description}}</p>
 
-<div class="page-header">
+<hr>
 <h3>Comments</h3>
-</div>
+
   <div ng-repeat="comment in idea.comments">
     <span style="font-size:12px;">
       {{comment.body}}
@@ -116,13 +126,14 @@
   </div>
 
 
+
     <!-- add comments -->
   <form ng-submit="addComment()"
   ng-show="isLoggedIn()"
     style="margin-top:30px;">
     <div class="jumbotron">
-      <div class="container">
-    <h3>Add a new comment</h3>
+    <div class="container">
+    <h3 class="formHeading">Add a new comment</h3>
     <div class="form-group">
       <input type="text"
       class="form-control"
@@ -142,9 +153,10 @@
 
 <!-- registration page -->
 <script type="text/ng-template" id="/register.html">
-  <div class="page-header">
+  <div class="col-md-6 col-md-offset-3">
+
     <h1>Partners</h1>
-  </div>
+
 
   <div ng-show="error" class="alert alert-danger row">
     <span>{{ error.message }}</span>
@@ -168,14 +180,16 @@
     </div>
     <button type="submit" class="btn btn-primary">Register</button>
   </form>
+</div>
 </script>
 
 
 <!-- login page -->
 <script type="text/ng-template" id="/login.html">
-  <div class="page-header">
+  <div class="col-md-6 col-md-offset-3">
+
     <h1>Partners</h1>
-  </div>
+
 
   <div ng-show="error" class="alert alert-danger row">
     <span>{{ error.message }}</span>
@@ -199,6 +213,7 @@
     </div>
     <button type="submit" class="btn btn-primary">Log In</button>
   </form>
+</div>
 </script>
 
 </body>
