@@ -14,9 +14,11 @@
 }
 
 img {
-    padding-top: 20px;
+    margin-top: 20px;
     height: 350px;
     width: 100%;
+    border: 5px solid black;
+    outline-style: dashed;
 }
 
 .page-header {
