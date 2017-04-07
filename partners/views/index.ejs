@@ -71,7 +71,7 @@
                       <div class="itemsIndex">
                             <span ng-show="idea.author">posted by <a>{{idea.author}}</a>
                             </span>
-                            <img src="{{idea.image_url}}">
+                            <img ng-src="{{idea.image_url}}">
                             <div class="caption">
                                 <h4 class="ideasHeading"><a class="ideaTitle" href="#/ideas/{{idea._id}}">{{idea.title}}</a></h4>
                                 <hr>
@@ -151,7 +151,7 @@
               <a class="backLink" href="#/ideas">Back</a>
             </div>
             <h1 class="ideasHeading">{{idea.title}}</h1>
-            <img src="{{idea.image_url}}">
+            <img ng-src="{{idea.image_url}}">
             <hr/>
             <h4>Description:</h4>
             <p> {{idea.description}}</p>
