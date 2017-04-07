@@ -15,15 +15,14 @@
             cursor: pointer
         }
     </style>
-</head>
+    </head>
 
-<body ng-app="partners" ng-controller="MainCtrl">
+    <body ng-app="partners" ng-controller="MainCtrl">
 
     <!-- navbar -->
     <nav class="navbar navbar-default navbar-fixed-top" ng-controller="NavCtrl">
         <ul class="nav navbar-nav">
             <li><a href="/#/home">Partners</a></li>
-            <li><a href="addIdea">Add Idea</a></li>
             <li ng-show="isLoggedIn()"><a>{{ currentUser() }}</a></li>
             <li ng-show="isLoggedIn()"><a href="" ng-click="logOut()">Log Out</a></li>
             <li ng-hide="isLoggedIn()"><a href="/#/login">Log In</a></li>
@@ -45,21 +44,16 @@
             </div>
         </div>
 
-        <div class="container-fluid">
-
-
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3">
+                    <div class="container-fluid">
+                    <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
 
 
                     <h2>Popular Ideas Snapshots</h2>
-                        <hr>
+                    <hr/>
+                    <a class="addIdeaButton" href="#addIdea"><button class="btn my-btn">Add Idea</button></a>
                     <span class="search"><i class="fa fa-search" aria-hidden="true"></i> <input placeholder="Search" ng-model="ideasSearch" />
                     </span>
-
-
-
-
                     <!-- ideas index -->
 
                     <div ng-repeat="idea in ideas | orderBy:'-upvotes' | filter: ideasSearch">
@@ -75,14 +69,14 @@
                                 <p>{{idea.description}}</p>
                                 <h5> Votes: {{idea.upvotes}}  <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(idea)"></span></h5>
                                 <hr>
-                                <a class="deleteButton" href="#/ideas"><button class="btn my-btn" ng-click="deleteIdea(idea)" type="submit">Found a Partner!</button></a>
+                                <a class="deleteButton" href="#/ideas"><button class="btn my-btn" ng-click="deleteIdea(idea)" type="submit">Remove my Idea</button></a>
                             </div>
                           </div>
                     </div>
 
-                    <!-- Add new idea -->
-                    <div id="addIdea">
-                    <form class="forms" ng-submit="addIdea()" ng-show="isLoggedIn()" style="margin-top:30px;">
+                    <!-- Add new idea form-->
+
+                    <form id="addIdea" class="forms" ng-submit="addIdea()" ng-show="isLoggedIn()" style="margin-top:30px;">
                                 <h3 class="formHeading">Add Your Idea</h3>
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="Title" ng-model="title"></input>
@@ -102,7 +96,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </script>
 
 
@@ -193,7 +186,7 @@
             </form>
         </div>
     </script>
-
+<!-- footer -->
     <footer>
       <p id="footerText"> Created by Dan Lin </p>
     </footer>
