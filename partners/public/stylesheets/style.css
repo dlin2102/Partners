@@ -81,6 +81,10 @@ p, h3 {
     font-family: 'Montserrat', sans-serif;
 }
 
+.backDiv{
+  padding-top: 100px;
+}
+
 nav{
   background-color: #77a283;
 }
@@ -91,4 +95,16 @@ nav{
 .commentSection{
   border: 1px solid black;
   padding: 20px;
+}
+footer {
+    display: block;
+    width: 100%;
+    height: 75px;
+    background-color: #77a283;
+    text-align: center;
+    margin-top: 50px;
+    position: absolute;
+}
+#footerText {
+  padding-top: 25px;
 }

@@ -33,8 +33,7 @@
 
     <!-- ui-view -->
 
-    <ui-view></ui-view>
-
+    <ui-view class="row"></ui-view>
 
     <!-- home page script-->
     <script type="text/ng-template" id="/home.html">
@@ -108,49 +107,45 @@
 
 
     <!-- ideas show page with comments -->
-<script type="text/ng-template" id="/ideas.html">
+  <script type="text/ng-template" id="/ideas.html">
 
     <div class="col-md-6 col-md-offset-3">
         <!-- Back link -->
-
-            <a class="backLink" href="#/ideas">Back</a>
-
-        <h1 class="ideasHeading">{{idea.title}}</h1>
-        <img src="{{idea.image_url}}">
-        <hr>
-        <h4>Description:</h4>
-        <p> {{idea.description}}</p>
-        <hr>
-        <div class="commentSection">
-            <h3 class="ideasHeading">Comments</h3>
-            <hr>
-            <div ng-repeat="comment in idea.comments">
-                <div class="commentAuthor">
-                <h4>  {{comment.author}} said</h4>
-                </div>
-                <div class="commentBody">
-                <p>  {{comment.body}}</p>
-                </div>
-                <hr>
+            <div class="backDiv">
+              <a class="backLink" href="#/ideas">Back</a>
             </div>
-        </div>
-
-
-            <!-- add comments -->
-
-            <form class="forms"ng-submit="addComment()" ng-show="isLoggedIn()" style="margin-top:30px;">
-
-                        <h3 class="formHeading">Add a new comment</h3>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Comment" ng-model="body"></input>
-                        </div>
-                        <button type="submit" class="btn my-btn">Post</button>
-            </form>
-          </div>
-            <div ng-hide="isLoggedIn()">
-                <h3>You need to <a href="/#/login">Log In</a> or <a href="/#/register">Register</a> before you can comment.</h3>
-        </div>
-    </script>
+            <h1 class="ideasHeading">{{idea.title}}</h1>
+            <img src="{{idea.image_url}}">
+            <hr/>
+            <h4>Description:</h4>
+            <p> {{idea.description}}</p>
+            <hr/>
+            <div class="commentSection">
+                <h3 class="ideasHeading">Comments</h3>
+                <hr/>
+                <div ng-repeat="comment in idea.comments">
+                  <div class="commentAuthor">
+                    <h4>  {{comment.author}} said</h4>
+                  </div>
+                  <div class="commentBody">
+                    <p>  {{comment.body}}</p>
+                  </div>
+                  <hr/>
+               </div>
+           </div>
+          <!-- add comments -->
+          <form class="forms"ng-submit="addComment()" ng-show="isLoggedIn()" style="margin-top:30px;">
+            <h3 class="formHeading">Add a new comment</h3>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Comment" ng-model="body"/>
+            </div>
+            <button type="submit" class="btn my-btn">Post</button>
+          </form>
+    </div>
+    <div ng-hide="isLoggedIn()">
+        <h3>You need to <a href="/#/login">Log In</a> or <a href="/#/register">Register</a> before you can comment.</h3>
+    </div>
+  </script>
 
 
     <!-- registration page -->
@@ -198,6 +193,11 @@
             </form>
         </div>
     </script>
+
+    <footer>
+      <p id="footerText"> Created by Dan Lin </p>
+    </footer>
+
 
 </body>
 
