@@ -114,11 +114,11 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Add your Idea</h4>
+                    <h3 class="formHeading">Add your Idea</h3>
                   </div>
                   <div class="modal-body">
-                  <form id="addIdea" class="forms" ng-submit="addIdea()" ng-show="isLoggedIn()" style="margin-top:30px;">
-                              <h3 class="formHeading">Add Your Idea</h3>
+                  <form id="addIdeaModal" class="forms" ng-submit="addIdea()" ng-show="isLoggedIn()" style="margin-top:30px;">
+
                               <div class="form-group">
                                   <input type="text" class="form-control" placeholder="Title" ng-model="title"></input>
                               </div>
@@ -128,7 +128,7 @@
                               <div class="form-group">
                                   <input type="text" class="form-control" placeholder="Explain your idea!" ng-model="description"></input>
                               </div>
-                              <a href="/#/home"><button type="submit" class="btn my-btn">Add Idea</button></a>
+                            <button type="submit" class="btn my-btn">Add Idea</button>
                   </form>
                   </div>
                   <div class="modal-footer">
