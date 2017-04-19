@@ -13,9 +13,9 @@ require('./models/Users');
 require('./config/passport');
 
 var uristring =
-process.env.MONGOLAB_URI ||
-process.env.MONGOHQ_URL ||
-'mongodb://localhost/ideas';
+process.env.MONGOLAB_URI;
+
+console.log('hello world');
 
 mongoose.connect(uristring);
 
