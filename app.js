@@ -12,7 +12,12 @@ require('./models/Comments');
 require('./models/Users');
 require('./config/passport');
 
-mongoose.connect('mongodb://localhost/ideas');
+var uristring =
+process.env.MONGOLAB_URI ||
+process.env.MONGOHQ_URL ||
+'mongodb://localhost/ideas';
+
+mongoose.connect(uristring);
 
 var index = require('./routes/index');
 var users = require('./routes/users');
