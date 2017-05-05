@@ -2,7 +2,7 @@
   margin-left: 352px;
 }
 .bg {
-    background: url('http://myomlife.com/i/2017/03/banana-tumblr-wallpapers-high-quality-resolution.jpg') fixed;
+    background: url('../images/bg.jpg') fixed;
     background-size: 100% 100%;
     background-position: center;
     width: 100%;
@@ -11,9 +11,6 @@
     left: 0;
     text-align: center;
     color: black;
-}
-.clothespin {
-  background: url('http://i.imgur.com/xBkrA58.png');
 }
 
 img {
@@ -55,7 +52,7 @@ p, h3 {
 }
 .forms {
    padding-top: 80px;
-    background: url('http://myomlife.com/i/2017/03/banana-tumblr-wallpapers-high-quality-resolution.jpg');
+    background: url('../images/bg.jpg');
     border: 1px solid black;
     padding: 20px;
 }
